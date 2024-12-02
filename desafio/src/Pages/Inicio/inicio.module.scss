@@ -10,6 +10,12 @@
         margin-left: 150px;
         font-size: 40px;
         width: 27vw;
+        text-shadow: 2px 2px 4px rgba(245, 243, 243, 0.7); 
+        transition: transform 0.3s ease; 
+
+    &:hover {
+        transform: scale(1.05); 
+    }
     }
 }
 
@@ -42,9 +48,14 @@
         justify-content: space-evenly;
         background-color: rgba(1, 87, 148, 0.3);
         border-radius: 10px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease; 
+
+    &:hover {
+        transform: translateY(-10px); 
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); 
+    }
         p{
             text-align: center;
-            // border: solid 2px blue;
             width: 70%;
             font-size: 20px;
         }
