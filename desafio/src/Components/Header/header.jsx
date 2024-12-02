@@ -5,16 +5,15 @@ import QueroDoar from '../../Pages/QueroDoar/QueroDoar';
 import logoLivro from '../../assets/logolivro.png';
 import lupa from '../../assets/lupa.png';
 import s from './header.module.scss';
-// Ao importar o Sass como um módulo (.module.scss), conseguimos usar estilos isolados dentro do componente, ou seja, eles só serão aplicados ao componente onde estão importados. Isso ajuda a evitar estilos acidentais que podem "vazar" para outros componentes.
 
 export default function Header() {
   return (
     <BrowserRouter>
-      <header className={s.header}>
+      <header className={s.Header}>
         <section className={s.logoHeader}>
           <img
             src={logoLivro}
-            alt="Imagem de ilustração de livvro aberto com capa azul"
+            alt="Imagem de ilustração de livro aberto com capa azul"
           />
           <h1>Livros Vai na Web</h1>
         </section>

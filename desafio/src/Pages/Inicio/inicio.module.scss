@@ -13,35 +13,38 @@
     }
 }
 
-.devodoar{
+.devoDoar{
     height: 80vh;
-    div{
+    
+    div{    
         height: 15vh;
         display: flex;
         align-items: center;
         h2{
             font-size: 30px;
             margin-left: 60px;
-            color: #005695;
+            color: rgba(0, 86, 149, 1);
         }
     }
 }
 
-.boxcard{
+.boxCard{
     height: 50vh;
-    align-items: center;
     display: flex;
+    align-items: center;
     justify-content: space-evenly;
     article{
         width: 20%;
         height: 80%;
+        display: flex;
         align-items: center;
         flex-direction: column;
         justify-content: space-evenly;
-        background-color: #015794;
+        background-color: rgba(1, 87, 148, 0.3);
         border-radius: 10px;
         p{
             text-align: center;
+            // border: solid 2px blue;
             width: 70%;
             font-size: 20px;
         }

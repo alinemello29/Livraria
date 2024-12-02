@@ -1,98 +1,82 @@
-.header {
-    background: linear-gradient(90deg, #001b2f 0%, #005695 100%);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 20vh;
-    transition: background 0.3s ease;
-  
-    &:hover {
-      background: linear-gradient(90deg, #005695 0%, #001b2f 100%);
-    }
-  
-    .logoHeader {
+.Header {
+  height: 15vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  background: linear-gradient(90deg, rgba(0,27,47,1) 0%, rgba(0,86,149,1) 88%);
+  color: white;
+
+  .logoHeader {
       display: flex;
-      width: 20%;
-      justify-content: space-around;
       align-items: center;
-      transition: transform 0.3s ease-in-out;
-  
+      height: 100%; 
+
       img {
-        width: 18%;
-        transition: transform 0.3s ease-in-out;
-      }
-  
-      h1 {
-        font-size: 25px;
-        color: #fff;
-        font-weight: bold;
-      }
-  
-      &:hover {
-        transform: scale(1.1);
-      }
-    }
-  
-    .navHeader {
-      width: 30%;
-  
-      ul {
-        display: flex;
-        justify-content: space-around;
-        list-style: none;
-      }
-  
-      .link {
-        color: #fff;
-        font-size: 20px;
-        text-decoration: none;
-        font-weight: bold;
-        transition: color 0.3s;
-  
-        &:hover {
-          color: #68d4ff; // Muda a cor do link ao passar o mouse
+        width: 50px; 
+            height: auto; 
+            margin-right: 10px; 
         }
+
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex; 
       }
-    }
-  
-    .barraDeBusca {
-      border: solid #fff;
-      border-radius: 20px;
-      margin-right: 1%;
-      width: 20%;
-      height: 6vh;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      transition: box-shadow 0.3s ease-in-out;
-  
-      input {
-        background-color: transparent;
-        border: none;
-        width: 55%;
-        height: 6vh;
-        font-weight: bold;
-  
-        &::placeholder {
-          color: #fff;
-          font-size: 13px;
-          font-weight: bold;
-        }
-      }
-  
-      button {
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-        transition: transform 0.3s ease-in-out;
-  
-        &:hover {
-          transform: scale(1.1);
-        }
-      }
-  
-      &:hover {
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); // Sombra ao passar o mouse
-      }
-    }
   }
+
+  .navHeader {
+      ul {
+          display: flex;
+          align-items: center;
+          justify-content: space-around; 
+          list-style: none; 
+
+          li {
+              margin: 0 15px; 
+
+              .link {
+                  color: white;
+                  font-size: 20px;
+                  text-decoration: none; 
+                  transition: color 0.3s;
+
+                  &:hover {
+                      color: #68d4ff; 
+                  }
+              }
+          }
+      }
+  }
+
+  .barraDeBusca {
+      display: flex;
+      align-items: center;
+      border: 2px solid white;
+      border-radius: 15px;
+      padding: 5px;
+
+      input {
+          background-color: transparent;
+          outline: none;
+          border: none;
+          color: white;
+          font-size: 15px;
+          padding: 5px;
+
+          &::placeholder {
+              color: white;
+          }
+      }
+
+      button {
+          background: transparent;
+          border: none;
+          cursor: pointer;
+
+          img {
+              width: 20px; 
+          }
+      }
+  }
+}
