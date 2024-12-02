@@ -16,19 +16,19 @@ export default function Inicio(){
                 </div>
                 <section className={S.boxCard}>
                     <article>
-                        <img src={Card1} alt="" />
+                        <img src={Card1} alt="card 1" />
                         <p> Oferece livros a quem não tem acesso, ajudando a reduzir a exclusão social.</p>
                     </article>
                     <article>
-                        <img src={Card2} alt="" />
+                        <img src={Card2} alt="card 2" />
                         <p>Estimula o hábito da leitura e o aprendizado contínuo.</p>
                     </article>
                     <article>
-                        <img src={Card3} alt="" />
+                        <img src={Card3} alt="card 3" />
                         <p>Fornece conhecimento e inspiração, permitindo que indivíduos transformem suas vidas.</p>
                     </article>
                     <article>
-                        <img src={Card4} alt="" />
+                        <img src={Card4} alt="card 4" />
                         <p>Garante que todos, independentemente de sua condição, tenham oportunidades de aprendizado.</p>
                     </article>
                 </section>
