@@ -1,8 +1,8 @@
-footer{
+footer {
     height: 30vh;
 }
 
-.boxSocial{
+.boxSocial {
     background-color: rgba(0, 86, 149, 1);
     height: 20vh;
     display: flex;
@@ -11,20 +11,63 @@ footer{
     padding-left: 50px;
     padding-right: 50px;
     color: white;
-    nav{
-       width: 18vw;
-       display: flex;
-       align-items: center;
-       justify-content: space-between;
+    transition: background-color 0.3s ease; 
+
+    &:hover {
+        background-color: rgba(0, 60, 110, 1);
+    }
+
+    h3 {
+        margin: 0; 
+        transition: color 0.3s ease; 
+
+        &:hover {
+            color: #68d4ff; 
+        }
+    }
+
+    nav {
+        width: 18vw;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        a {
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s ease; 
+
+            &:hover {
+                transform: scale(1.1);
+                filter: brightness(0.8); 
+            }
+
+            img {
+                width: 30px; 
+                height: auto;
+            }
+        }
     }
 }
 
-.boxEnd{
+.boxEnd {
     background-color: rgba(35, 32, 32, 1);
     color: white;
     height: 10vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    display: block;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: rgba(35, 32, 32, 1); 
+    }
+
+    p {
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: scale(1.05); 
+        }
+    }
 }
