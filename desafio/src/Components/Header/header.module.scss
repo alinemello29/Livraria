@@ -1,82 +1,115 @@
-.Header {
-  height: 15vh;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 2rem;
-  background: linear-gradient(90deg, rgba(0,27,47,1) 0%, rgba(0,86,149,1) 88%);
-  color: white;
+header{
+    
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(90deg, #001B2F 0%, #005695 100%);
 
-  .logoHeader {
-      display: flex;
-      align-items: center;
-      height: 100%; 
+}
+.boxLogo{
+   width: 23vw;
+   display: flex;
+   align-items: center;
+   justify-content: space-evenly;
+   h1{
+    color: white;
+    font-size: 25px;
+   }
+}
 
-      img {
-        width: 50px; 
-            height: auto; 
-            margin-right: 10px; 
+.boxMenu{
+   
+    width: 35vw;
+    ul{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 20px;
+        a{
+            color: white;
         }
+    }
+}
 
-        h1 {
-            font-size: 24px;
-            font-weight: bold;
-            display: flex; 
-      }
-  }
+.boxInput{
+    border: solid 2px white;
+    width: 17vw;
+    margin-right: 20px;
+    height: 6vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 15px;
+    input{
+        outline: none;
+        background-color: transparent;
+        border: none;
+        color: white;
+        font-size: 15px;
+        padding-left: 6px;
+        width: 12vw;
+        &::placeholder{
+            color: white;
+        }
+    }
+}
 
-  .navHeader {
-      ul {
-          display: flex;
-          align-items: center;
-          justify-content: space-around; 
-          list-style: none; 
+@media(max-width: 1170px){
 
-          li {
-              margin: 0 15px; 
+    .boxLogo{
+        // border: solid 2px red;
+        width: 25vw;
+        h1{
+            font-size: 2vw;
+        }
+        img{
+            width: 5vw;
+        }
+    }
+    .boxInput{
+        input{
+            &::placeholder{
+                font-size: 1.1vw;
+            }
+        }      
+    }
 
-              .link {
-                  color: white;
-                  font-size: 20px;
-                  text-decoration: none; 
-                  transition: color 0.3s;
+   .boxMenu{
+    // border: solid 2px yellow;
+    ul{
+    font-size: 1.6vw;
+    }
+   } 
 
-                  &:hover {
-                      color: #68d4ff; 
-                  }
-              }
-          }
-      }
-  }
+}
 
-  .barraDeBusca {
-      display: flex;
-      align-items: center;
-      border: 2px solid white;
-      border-radius: 15px;
-      padding: 5px;
+@media(max-width: 780px){
+    header{
+        flex-direction: column;
+        height: 25vh;
+        justify-content: space-evenly;
+    }
 
-      input {
-          background-color: transparent;
-          outline: none;
-          border: none;
-          color: white;
-          font-size: 15px;
-          padding: 5px;
+    .boxInput{
+        display: none;
+    }
 
-          &::placeholder {
-              color: white;
-          }
-      }
+    .boxLogo{
+        width: 80%;
+        h1{
+            font-size: 25px;
+        }
+        img{
+            width: 70px;
+        }
+    }
 
-      button {
-          background: transparent;
-          border: none;
-          cursor: pointer;
-
-          img {
-              width: 20px; 
-          }
-      }
-  }
+    .boxMenu{
+        width: 100%;
+        ul{
+            justify-content: space-evenly;
+            font-size: 21px;
+        }
+    }
 }
