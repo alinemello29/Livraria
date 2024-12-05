@@ -1,8 +1,8 @@
 footer{
     height: 30vh;
-}
-
-.boxSocial{
+    }
+    
+    .boxSocial{
     background-color: #005695;
     height: 20vh;
     display: flex;
@@ -12,40 +12,42 @@ footer{
     padding-left: 50px;
     padding-right: 50px;
     nav{
-      width: 16vw; 
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    width: 16vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     }
-}
-
-.boxEnd{
+    }
+    
+    .boxEnd{
     background-color: #232020;
     height: 10vh;
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-@media(max-width: 1000px){
-    .boxSocial{
-        nav{
-            // border: solid 2px red;
-            width: 220px;
-        }
     }
-}
-
-@media(max-width: 479px){
+    
+    @media(max-width: 1000px){
     .boxSocial{
-        flex-direction: column;
-        justify-content: space-evenly;
+    nav{
+    // border: solid 2px red;
+    width: 220px;
     }
-
+    }
+    }
+    
+    @media(max-width: 479px){
+    .boxSocial{
+    flex-direction: column;
+    justify-content: space-evenly;
+    }
+    
+    
+    Copiar
     .boxEnd{
         p{
             text-align: center;
         }
     }
-}
+    }

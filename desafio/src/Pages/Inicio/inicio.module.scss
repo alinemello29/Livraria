@@ -1,61 +1,59 @@
 .banner {
     background-image: url('../../assets/banner.png');
     background-repeat: no-repeat;
-    background-size: contain;
-    height: 88vh;
+    background-size: cover;
+    background-position: center;
+    height: 83vh;
     display: flex;
     align-items: center;
 
     h2 {
         color: white;
-        margin-left: 150px;
-        font-size: 40px;
+        // border: solid 2px red;
         width: 27vw;
-        text-shadow: 2px 2px 4px rgba(245, 243, 243, 0.7); 
-        transition: transform 0.3s ease;
-
-        &:hover {
-            transform: scale(1.05); 
-        }
+        font-size: 40px;
+        margin-left: 150px;
     }
 }
-
 .devoDoar {
-    height: 80vh;
+    height: auto; /* Ajustar altura para auto */
+    padding: 20px 0; /* Adicionar padding para espaçamento */
 
-    div {    
-        height: 15vh;
+    div {
+        height: auto; /* Ajustar altura para auto */
         display: flex;
+        justify-content: center;
         align-items: center;
 
         h2 {
             font-size: 30px;
-            margin-left: 60px;
+            margin: 0; /* Remover margem */
             color: rgba(0, 86, 149, 1);
         }
     }
 }
 
 .boxCard {
-    height: 50vh;
     display: flex;
-    align-items: center;
+    flex-wrap: wrap; /* Permitir quebra de linha */
     justify-content: space-evenly;
+    gap: 20px; /* Espaçamento entre os cartões */
+    padding: 20px; /* Adicionar padding para espaçamento */
 
     article {
-        width: 20%;
-        height: 80%;
+        width: calc(20% - 20px); /* Ajustar largura com espaçamento */
+        height: auto; /* Altura automática */
         display: flex;
-        align-items: center;
         flex-direction: column;
+        align-items: center;
         justify-content: space-evenly;
         background-color: rgba(1, 87, 148, 0.3);
         border-radius: 10px;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
 
         &:hover {
-            transform: translateY(-10px); 
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); 
+            transform: translateY(-10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
 
         p {
@@ -68,55 +66,37 @@
 
 // Media Queries for Responsiveness
 @media(max-width: 1000px) {
-    .boxCard {
-        article {
-            p {
-                font-size: 1.5vw;
-            }
-        }
+    .boxCard article {
+        width: calc(45% - 20px); /* Ajustar largura em telas menores */
     }
 }
 
 @media(max-width: 780px) {
     .devoDoar {
-        height: 120vh;
+        height: auto; /* Ajustar para auto */
+        padding: 10px 0; /* Reduzir padding para telas menores */
 
         div {
-            justify-content: center;
-
-            h2 {
-                margin-left: 0;
-            }
+            height: auto; /* Ajustar altura automática */
         }
     }
 
     .boxCard {
-        height: auto;
-        flex-wrap: wrap;
-        gap: 20px;
-
         article {
-            width: 230px;
-            height: 38vh;
-
-            p {
-                font-size: 14px;
-            }
+            width: calc(100% - 20px); /* Ocupa 100% da largura em telas pequenas */
+            height: auto; /* Altura automática */
         }
     }
 }
 
 @media(max-width: 479px) {
     .devoDoar {
-        height: 190vh;
+        height: auto; /* Ajustar para auto */
     }
 
-    banner {
-        h2 {
-            font-size: 24px; // Reduzir o tamanho da fonte para telas menores
-            margin-left: 20px; // Ajustar o margin
-            width: auto; // Remover a largura fixa
-            text-align: center; // Centralizar texto
-        }
+    .banner h2 {
+        font-size: 24px; /* Reduzir o tamanho da fonte para telas menores */
+        margin: 0; /* Remover margem */
+        text-align: center; /* Centralizar texto */
     }
 }
