@@ -32,25 +32,39 @@ header{
     }
 }
 
-.boxInput{
-    border: solid 2px white;
-    width: 17vw;
-    margin-right: 20px;
-    height: 6vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    border-radius: 15px;
-    input{
-        outline: none;
-        background-color: transparent;
-        border: none;
-        color: white;
-        font-size: 15px;
-        padding-left: 6px;
-        width: 12vw;
-        &::placeholder{
-            color: white;
+.boxInput {
+    border: solid 2px white;  /* Borda do campo */
+    width: 17vw;              /* Largura do campo */
+    margin-right: 20px;       /* Margem à direita */
+    height: 6vh;              /* Altura do campo */
+    display: flex;            /* Usar flexbox para alinhamento */
+    align-items: center;      /* Alinhar itens ao centro */
+    border-radius: 15px;      /* Bordas arredondadas */
+    background-color: rgba(0, 0, 0, 0); /* Fundo levemente transparente */
+
+    input {
+        outline: none;        /* Sem contorno ao focar */
+        background-color: transparent;  /* Fundo transparente */
+        border: none;         /* Sem borda no input */
+        color: white;         /* Cor do texto */
+        font-size: 15px;      /* Tamanho da fonte */
+        padding-left: 6px;    /* Padding à esquerda */
+        width: 100%;          /* Preencher todo o espaço disponível */
+        
+        &::placeholder {
+            color: white;      /* Cor do placeholder */
+        }
+    }
+
+    button {
+        background-color: transparent; /* Botão transparente */
+        border: none;                  /* Sem borda no botão */
+        cursor: pointer;               /* Cursor de ponteiro */
+        margin-left: 10px;             /* Margem à esquerda para espaçamento */
+        
+        img {
+            width: 20px;              /* Tamanho do ícone */
+            height: auto;             /* Manter proporção */
         }
     }
 }

@@ -10,14 +10,14 @@ export default function Header() {
   return (
     <BrowserRouter>
       <header className={s.Header}>
-        <section className={s.logoHeader}>
+        <section className={s.boxLogo}>
           <img
             src={logoLivro}
             alt="Imagem de ilustração de livro aberto com capa azul"
           />
           <h1>Livros Vai na Web</h1>
         </section>
-        <nav className={s.navHeader}>
+        <nav className={s.boxMenu}>
           <ul>
             <li>
               <Link className={s.link} to="/">
@@ -36,11 +36,9 @@ export default function Header() {
             </li>
           </ul>
         </nav>
-        <section className={s.barraDeBusca}>
+        <section className={s.boxInput}>
           <input
             type="search"
-            name=""
-            id=""
             placeholder="O que você procura?"
           />
           <button>
