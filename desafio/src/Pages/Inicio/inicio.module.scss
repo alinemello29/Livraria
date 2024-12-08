@@ -6,28 +6,27 @@
     height: 83vh;
     display: flex;
     align-items: center;
-
-    h2 {
+    h2{
         color: white;
-        // border: solid 2px red;
         width: 27vw;
         font-size: 40px;
         margin-left: 150px;
     }
 }
+
 .devoDoar {
-    height: auto; /* Ajustar altura para auto */
-    padding: 20px 0; /* Adicionar padding para espaçamento */
+    height: auto; 
+    padding: 20px 0; 
 
     div {
-        height: auto; /* Ajustar altura para auto */
+        height: auto; 
         display: flex;
-        justify-content: center;
+        justify-content: center; 
         align-items: center;
 
         h2 {
             font-size: 30px;
-            margin: 0; /* Remover margem */
+            margin: 0; 
             color: rgba(0, 86, 149, 1);
         }
     }
@@ -35,14 +34,14 @@
 
 .boxCard {
     display: flex;
-    flex-wrap: wrap; /* Permitir quebra de linha */
+    flex-wrap: wrap;
     justify-content: space-evenly;
-    gap: 20px; /* Espaçamento entre os cartões */
-    padding: 20px; /* Adicionar padding para espaçamento */
+    gap: 20px; 
+    padding: 20px; 
 
     article {
-        width: calc(20% - 20px); /* Ajustar largura com espaçamento */
-        height: auto; /* Altura automática */
+        width: calc(20% - 20px); 
+        height: auto; 
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -64,39 +63,41 @@
     }
 }
 
-// Media Queries for Responsiveness
+
 @media(max-width: 1000px) {
     .boxCard article {
-        width: calc(45% - 20px); /* Ajustar largura em telas menores */
+        width: calc(45% - 20px); 
     }
 }
 
 @media(max-width: 780px) {
     .devoDoar {
-        height: auto; /* Ajustar para auto */
-        padding: 10px 0; /* Reduzir padding para telas menores */
+        height: auto; 
+        padding: 10px 0; 
 
         div {
-            height: auto; /* Ajustar altura automática */
+            height: auto; 
         }
     }
 
     .boxCard {
         article {
-            width: calc(100% - 20px); /* Ocupa 100% da largura em telas pequenas */
-            height: auto; /* Altura automática */
+            width: calc(100% - 20px); 
+            height: auto; 
         }
     }
 }
 
-@media(max-width: 479px) {
-    .devoDoar {
-        height: auto; /* Ajustar para auto */
+@media(max-width: 780px){
+
+    .banner{
+        justify-content: center;
+        h2{
+            
+            width: 80%;
+            margin-left: 0;
+            text-align: center;
+        }
     }
 
-    .banner h2 {
-        font-size: 24px; /* Reduzir o tamanho da fonte para telas menores */
-        margin: 0; /* Remover margem */
-        text-align: center; /* Centralizar texto */
-    }
 }
