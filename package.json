@@ -1,0 +1,12 @@
+{
+  "name": "livraria",
+  "version": "1.0.0",
+  "description": "## 🚀 Sobre o Projeto Este projeto é parte do desafio do curso de Fullstack na Escola Vai na Web. Ele é construído com **React** e **SCSS**, focando em um design **responsivo** para proporcionar uma ótima experiência em diferentes dispositivos.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
