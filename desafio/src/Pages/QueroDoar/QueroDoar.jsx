@@ -11,7 +11,7 @@ export default function Doados() {
 
     const getLivros = async () => {
         try {
-            const response = await axios.get("https://desafio-2-api-livros-vai-na-web-53p7.onrender.com/livros");
+            const response = await axios.post("http://localhost:3000/items", livroData);
             setLivros(response.data);
         } catch (error) {
             console.error("Erro ao buscar livros:", error);
