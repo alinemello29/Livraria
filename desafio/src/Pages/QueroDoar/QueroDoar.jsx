@@ -1,74 +1,43 @@
-import S from './queroDoar.module.scss' // Importa o módulo de estilos CSS
-import livro from '../../assets/Vector.png' // Importa a imagem do livro
-import axios from 'axios' // Importa a biblioteca Axios para requisições HTTP
-import {useState} from 'react' // Importa o hook useState do React
+import S from './doados.module.scss'
+import livro from '../../assets/livro.png'
+import axios from 'axios'
+import { useState, useEffect } from 'react'
 
-export default function QueroDoar(){
+export default function Doados() {
+    // Estado para armazenar os livros recebidos da API
+    const [livros, setLivros] = useState([])
 
-    // Estados para armazenar os valores dos campos do formulário
-    const [titulo, setTitulo] = useState("")
-    const [categoria, setCategoria] = useState("")
-    const [autor, setAutor] = useState("")
-    const [imagem_url, setImagem_url] = useState("")
-
-    // Função assíncrona para enviar os dados para a API
-    const enviarDados = async()=>{
-        
-        const urlApi = "https://teste-deploy-bkai.onrender.com/doar" // URL da API
-
-        // Objeto contendo os dados do livro
-        const dadosEnviar = {
-            titulo,
-            categoria,
-            autor,
-            imagem_url
+    // Função assíncrona para buscar os livros na API
+    const getLivros = async () => {
+        try {
+            const response = await axios.get("https://teste-deploy-bkai.onrender.com/livros")
+            setLivros(response.data)
+        } catch (error) {
+            console.error("Erro ao buscar livros:", error)
         }
-
-        await axios.post(urlApi, dadosEnviar) // Envia os dados para a API via POST
-
-        alert("Livro cadastrado!!") // Exibe um alerta informando o sucesso da operação
-
-        // Reseta os campos do formulário
-        setTitulo("")
-        setCategoria("")
-        setAutor("")
-        setImagem_url("")
     }
 
-    // Funções para capturar e atualizar os estados com os valores inseridos pelo usuário
-    const capturaTitulo = (e) =>{
-        setTitulo(e.target.value)
-        console.log(e.target.value) // Exibe o valor no console para debug
-    }
+    // useEffect para chamar a função de busca ao montar o componente
+    useEffect(() => {
+        getLivros()
+    }, [])
 
-    const capturaCategoria = (e) =>{
-        setCategoria(e.target.value)
-    }
-
-    const capturaAutor = (e) =>{
-        setAutor(e.target.value)
-    }
-
-    const capturaImagem = (e) =>{
-        setImagem_url(e.target.value)
-    }
-
-    return(
-        <section className={S.principal}> {/* Contêiner principal estilizado */}
-            <section className={S.container}> {/* Contêiner interno */}
-                <h2>Por favor, preencha o formulário com suas informações e as informações do Livro</h2>
-                <form onSubmit={(e)=> e.preventDefault()}> {/* Previne o comportamento padrão do formulário */}
-                    <div>
-                        <img src={livro} alt="" /> {/* Exibe a imagem do livro */}
-                        <h3>Informações do Livro</h3>
-                    </div>
-                    {/* Campos do formulário */}
-                    <input type="text" placeholder='Titulo' onChange={capturaTitulo} value={titulo} />
-                    <input type="text" placeholder='Categoria' onChange={capturaCategoria} value={categoria} />
-                    <input type="text" placeholder='Autor' onChange={capturaAutor} value={autor}/>
-                    <input type="text" placeholder='Link da Imagem' onChange={capturaImagem} value={imagem_url} />
-                    <input className={S.doar} type="submit" value="Doar" onClick={enviarDados} /> {/* Botão de submissão */}
-                </form>
+    return (
+        <section className={S.boxDoados}>
+            <h2>Livros Doados</h2>
+            <section className={S.boxBooks}>
+                {/* Livro fixo */}
+               
+                
+                {/* Renderização dos livros recebidos da API */}
+                {livros.map((item) => (
+                    <article key={item.id}>
+                        <img src={item.imagem_url} alt={item.titulo} />
+                        <h3>{item.titulo}</h3>
+                        <p>{item.autor}</p>
+                        <p>{item.categoria}</p>
+                    </article>
+                ))}
             </section>
         </section>
     )
