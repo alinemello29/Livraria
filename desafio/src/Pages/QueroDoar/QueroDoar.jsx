@@ -13,8 +13,7 @@ export default function Doados() {
     // Função assíncrona para buscar os livros na API
     const getLivros = async () => {
         try {
-            const response = await axios.get("https://livraria-1.onrender.com/livros");
-            setLivros(response.data);
+            const response = await axios.post("https://livraria-1.onrender.com/livros", livroData);
         } catch (error) {
             console.error("Erro ao buscar livros:", error);
         }
