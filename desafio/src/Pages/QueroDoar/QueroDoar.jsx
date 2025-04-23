@@ -7,15 +7,16 @@ export default function Doados() {
     // Estado para armazenar os livros recebidos da API
     const [livros, setLivros] = useState([])
 
-    // Função assíncrona para buscar os livros na API
-    const getLivros = async () => {
-        try {
-            const response = await axios.get("https://livraria-1.onrender.com")
-            setLivros(response.data)
-        } catch (error) {
-            console.error("Erro ao buscar livros:", error)
-        }
+    const addLivro = async (livroData) => {
+    try {
+        const response = await axios.post("https://livraria-1.onrender.com/livros", livroData);
+        console.log('Livro adicionado:', response.data);
+        // Atualize a lista de livros após adicionar
+        getLivros();
+    } catch (error) {
+        console.error("Erro ao adicionar livro:", error);
     }
+};
 
     // useEffect para chamar a função de busca ao montar o componente
     useEffect(() => {
