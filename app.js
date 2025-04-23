@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json()); // Para permitir o envio de JSON
 
 // Conexão com o MongoDB
-mongoose.connect('sua_url_de_conexao', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://alinedev550:bSX2f93z1mOWQ3L0@cluster0.t8hply5.mongodb.net/nome_do_banco_de_dados?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB conectado'))
     .catch(err => console.error('Erro ao conectar ao MongoDB:', err));
 
