@@ -11,7 +11,7 @@ export default function Doados() {
 
     const getLivros = async () => {
         try {
-            const response = await axios.get("https://desafio-2-api-livros-vai-na-web-53p7.onrender.com/doar");
+            const response = await axios.get("https://desafio-2-api-livros-vai-na-web-53p7.onrender.com/livros");
             setLivros(response.data);
         } catch (error) {
             console.error("Erro ao buscar livros:", error);
@@ -50,7 +50,6 @@ export default function Doados() {
     return (
         <section className={S.boxDoados}>
             <h2>Livros Doados</h2>
-
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
@@ -82,7 +81,6 @@ export default function Doados() {
                 />
                 <button type="submit">Adicionar Livro</button>
             </form>
-
             <section className={S.boxBooks}>
                 {livros.map((item) => (
                     <article key={item.id}>
