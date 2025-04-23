@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
-app.use(express.json());
+app.use(express.json()); // Para permitir o envio de JSON
 
 // Conexão com o MongoDB
 mongoose.connect('sua_url_de_conexao', { useNewUrlParser: true, useUnifiedTopology: true })
