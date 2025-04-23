@@ -3,35 +3,31 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 
 export default function Doados() {
-    // Estado para armazenar os livros recebidos da API
     const [livros, setLivros] = useState([]);
     const [titulo, setTitulo] = useState('');
     const [autor, setAutor] = useState('');
     const [categoria, setCategoria] = useState('');
     const [imagemUrl, setImagemUrl] = useState('');
 
-    // Função assíncrona para buscar os livros na API
     const getLivros = async () => {
         try {
-            const response = await axios.post("https://livraria-1.onrender.com/livros", livroData);
+            const response = await axios.get("https://desafio-2-api-livros-vai-na-web-53p7.onrender.com/livros");
+            setLivros(response.data);
         } catch (error) {
             console.error("Erro ao buscar livros:", error);
         }
     };
 
-    // Função para adicionar um novo livro
     const addLivro = async (livroData) => {
         try {
-            const response = await axios.post("https://livraria-1.onrender.com/livros", livroData);
+            const response = await axios.post("https://desafio-2-api-livros-vai-na-web-53p7.onrender.com/doar", livroData);
             console.log('Livro adicionado:', response.data);
-            // Atualiza a lista de livros após adicionar
             getLivros();
         } catch (error) {
             console.error("Erro ao adicionar livro:", error);
         }
     };
 
-    // Função para lidar com o envio do formulário
     const handleSubmit = (e) => {
         e.preventDefault();
         const livroData = {
@@ -41,14 +37,12 @@ export default function Doados() {
             imagem_url: imagemUrl,
         };
         addLivro(livroData);
-        // Limpar os campos do formulário
         setTitulo('');
         setAutor('');
         setCategoria('');
         setImagemUrl('');
     };
 
-    // useEffect para chamar a função de busca ao montar o componente
     useEffect(() => {
         getLivros();
     }, []);
@@ -90,7 +84,6 @@ export default function Doados() {
             </form>
 
             <section className={S.boxBooks}>
-                {/* Renderização dos livros recebidos da API */}
                 {livros.map((item) => (
                     <article key={item.id}>
                         <img src={item.imagem_url} alt={item.titulo} />
