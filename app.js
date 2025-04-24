@@ -5,60 +5,81 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
+// Middlewares
 app.use(cors());
-app.use(express.json()); // Para permitir o envio de JSON
+app.use(express.json());
 
-// Conexão com o MongoDB
-mongoose.connect('mongodb+srv://alinedev550:bSX2f93z1mOWQ3L0@cluster0.t8hply5.mongodb.net/nome_do_banco_de_dados?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('MongoDB conectado'))
-    .catch(err => console.error('Erro ao conectar ao MongoDB:', err));
+// Conexão com MongoDB
+mongoose.connect('mongodb+srv://alinedev550:bSX2f93z1mOWQ3L0@cluster0.t8hply5.mongodb.net/livraria?retryWrites=true&w=majority')
+    .then(() => console.log('✅ MongoDB conectado'))
+    .catch(err => console.error('❌ Erro ao conectar ao MongoDB:', err));
 
-// Definir um modelo (Schema)
+// Schema e Model
 const ItemSchema = new mongoose.Schema({
-    name: String,
-    description: String
+    titulo: String,
+    autor: String,
+    categoria: String,
+    imagem_url: String,
 });
 
-const Item = mongoose.model('Item', ItemSchema);
 
 // Rotas CRUD
 
-// Criar um novo item
+// Criar item
 app.post('/items', async (req, res) => {
-    const item = new Item(req.body);
-    await item.save();
-    res.status(201).send(item);
+    try {
+        const item = new Item(req.body);
+        await item.save();
+        res.status(201).json(item);
+    } catch (err) {
+        res.status(400).json({ error: 'Erro ao criar item', detalhes: err.message });
+    }
 });
 
-// Ler todos os itens
+// Listar todos os itens
 app.get('/items', async (req, res) => {
-    const items = await Item.find();
-    res.send(items);
+    try {
+        const items = await Item.find();
+        res.json(items);
+    } catch (err) {
+        res.status(500).json({ error: 'Erro ao buscar itens' });
+    }
 });
 
-// Ler um item específico
+// Obter item por ID
 app.get('/items/:id', async (req, res) => {
-    const item = await Item.findById(req.params.id);
-    if (!item) return res.status(404).send('Item não encontrado');
-    res.send(item);
+    try {
+        const item = await Item.findById(req.params.id);
+        if (!item) return res.status(404).send('Item não encontrado');
+        res.json(item);
+    } catch (err) {
+        res.status(500).json({ error: 'Erro ao buscar item' });
+    }
 });
 
-// Atualizar um item
+// Atualizar item
 app.put('/items/:id', async (req, res) => {
-    const item = await Item.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    if (!item) return res.status(404).send('Item não encontrado');
-    res.send(item);
+    try {
+        const item = await Item.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        if (!item) return res.status(404).send('Item não encontrado');
+        res.json(item);
+    } catch (err) {
+        res.status(400).json({ error: 'Erro ao atualizar item' });
+    }
 });
 
-// Deletar um item
+// Deletar item
 app.delete('/items/:id', async (req, res) => {
-    const item = await Item.findByIdAndDelete(req.params.id);
-    if (!item) return res.status(404).send('Item não encontrado');
-    res.send('Item deletado');
+    try {
+        const item = await Item.findByIdAndDelete(req.params.id);
+        if (!item) return res.status(404).send('Item não encontrado');
+        res.send('Item deletado');
+    } catch (err) {
+        res.status(500).json({ error: 'Erro ao deletar item' });
+    }
 });
 
 // Iniciar o servidor
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`🚀 Server is running on http://localhost:${PORT}`);
 });

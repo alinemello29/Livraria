@@ -10,23 +10,26 @@ export default function Doados() {
     const [imagemUrl, setImagemUrl] = useState('');
 
     const getLivros = async () => {
-        try {
-            const response = await axios.get("https://desafio-2-api-livros-vai-na-web-53p7.onrender.com/livros");
-            setLivros(response.data);
-        } catch (error) {
-            console.error("Erro ao buscar livros:", error);
-        }
-    };
+    try {
+        const response = await axios.get("http://localhost:3000/items");
+        setLivros(response.data);
+    } catch (error) {
+        console.error("Erro ao buscar livros:", error);
+    }
+};
 
-    const addLivro = async (livroData) => {
-        try {
-            const response = await axios.post("https://desafio-2-api-livros-vai-na-web-53p7.onrender.com/doar", livroData);
-            console.log('Livro adicionado:', response.data);
-            getLivros();
-        } catch (error) {
-            console.error("Erro ao adicionar livro:", error);
-        }
-    };
+
+   const addLivro = async (livroData) => {
+    try {
+        const response = await axios.post("http://localhost:3000/items", livroData);
+        console.log('Livro adicionado:', response.data);
+        getLivros();
+    } catch (error) {
+        console.error("Erro ao adicionar livro:", error);
+    }
+};
+
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
