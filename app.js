@@ -16,11 +16,12 @@ mongoose.connect('mongodb+srv://alinedev550:bSX2f93z1mOWQ3L0@cluster0.t8hply5.mo
 
 // Schema e Model
 const ItemSchema = new mongoose.Schema({
-    name: String,
-    description: String
+    titulo: String,
+    autor: String,
+    categoria: String,
+    imagem_url: String,
 });
 
-const Item = mongoose.model('Item', ItemSchema);
 
 // Rotas CRUD
 
