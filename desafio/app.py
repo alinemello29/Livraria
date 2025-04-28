@@ -26,9 +26,9 @@ def doar_livro():
     livros.append(livro)
     return jsonify(livro), 201
 
-@app.route('/doar', methods=['GET'])
+@app.route('/livros', methods=['GET'])  # Altere para /livros
 def listar_livros():
     return jsonify(livros), 200
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)  # Ative o modo debug para facilitar a depuração
