@@ -9,28 +9,31 @@ export default function Doados() {
     const [categoria, setCategoria] = useState('');
     const [imagemUrl, setImagemUrl] = useState('');
 
+    // URL da API
+    const API_URL = 'https://desafio-2-api-livros-vai-na-web-53p7.onrender.com/items';
+
+    // Função para buscar livros da API
     const getLivros = async () => {
-    try {
-        const response = await axios.get("http://localhost:3000/items");
-        setLivros(response.data);
-    } catch (error) {
-        console.error("Erro ao buscar livros:", error);
-    }
-};
+        try {
+            const response = await axios.get(API_URL);
+            setLivros(response.data); // Ajuste conforme a estrutura da resposta da API
+        } catch (error) {
+            console.error("Erro ao buscar livros:", error);
+        }
+    };
 
+    // Função para adicionar um livro
+    const addLivro = async (livroData) => {
+        try {
+            const response = await axios.post(API_URL, livroData);
+            console.log('Livro adicionado:', response.data);
+            getLivros(); // Atualiza a lista de livros
+        } catch (error) {
+            console.error("Erro ao adicionar livro:", error);
+        }
+    };
 
-   const addLivro = async (livroData) => {
-    try {
-        const response = await axios.post("http://localhost:3000/items", livroData);
-        console.log('Livro adicionado:', response.data);
-        getLivros();
-    } catch (error) {
-        console.error("Erro ao adicionar livro:", error);
-    }
-};
-
-
-
+    // Lidar com o envio do formulário
     const handleSubmit = (e) => {
         e.preventDefault();
         const livroData = {
@@ -40,12 +43,14 @@ export default function Doados() {
             imagem_url: imagemUrl,
         };
         addLivro(livroData);
+        // Limpar campos do formulário
         setTitulo('');
         setAutor('');
         setCategoria('');
         setImagemUrl('');
     };
 
+    // Chama getLivros ao montar o componente
     useEffect(() => {
         getLivros();
     }, []);
