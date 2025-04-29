@@ -31,4 +31,4 @@ def listar_livros():
     return jsonify(livros), 200
 
 if __name__ == '__main__':
-    app.run(debug=True)  # Ative o modo debug para facilitar a depuração
+    app.run(debug=True) 
