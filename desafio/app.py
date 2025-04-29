@@ -26,7 +26,7 @@ def doar_livro():
     livros.append(livro)
     return jsonify(livro), 201
 
-@app.route('/livros', methods=['GET'])  # Altere para /livros
+@app.route('/livros', methods=['GET'])
 def listar_livros():
     return jsonify(livros), 200
 
