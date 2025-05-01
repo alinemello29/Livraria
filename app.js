@@ -22,17 +22,19 @@ const ItemSchema = new mongoose.Schema({
     imagem_url: String,
 });
 
+const Item = mongoose.model('Item', ItemSchema);
 
 // Rotas CRUD
 
 // Criar item
 app.post('/items', async (req, res) => {
     try {
-        const item = new Item(req.body);
-        await item.save();
-        res.status(201).json(item);
+        const newItem = new Item(req.body);
+        const savedItem = await newItem.save();
+        res.status(201).json({ message: 'Item criado com sucesso!', data: savedItem });
     } catch (err) {
-        res.status(400).json({ error: 'Erro ao criar item', detalhes: err.message });
+        console.error('Erro ao criar item:', err);
+        res.status(400).json({ error: 'Erro ao criar item', details: err.message });
     }
 });
 
@@ -40,9 +42,10 @@ app.post('/items', async (req, res) => {
 app.get('/items', async (req, res) => {
     try {
         const items = await Item.find();
-        res.json(items);
+        res.status(200).json({ message: 'Itens listados com sucesso!', data: items });
     } catch (err) {
-        res.status(500).json({ error: 'Erro ao buscar itens' });
+        console.error('Erro ao buscar itens:', err);
+        res.status(500).json({ error: 'Erro ao buscar itens', details: err.message });
     }
 });
 
@@ -50,32 +53,41 @@ app.get('/items', async (req, res) => {
 app.get('/items/:id', async (req, res) => {
     try {
         const item = await Item.findById(req.params.id);
-        if (!item) return res.status(404).send('Item não encontrado');
-        res.json(item);
+        if (!item) {
+            return res.status(404).json({ message: 'Item não encontrado' });
+        }
+        res.status(200).json({ message: 'Item encontrado!', data: item });
     } catch (err) {
-        res.status(500).json({ error: 'Erro ao buscar item' });
+        console.error('Erro ao buscar item:', err);
+        res.status(500).json({ error: 'Erro ao buscar item', details: err.message });
     }
 });
 
 // Atualizar item
 app.put('/items/:id', async (req, res) => {
     try {
-        const item = await Item.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        if (!item) return res.status(404).send('Item não encontrado');
-        res.json(item);
+        const updatedItem = await Item.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+        if (!updatedItem) {
+            return res.status(404).json({ message: 'Item não encontrado' });
+        }
+        res.status(200).json({ message: 'Item atualizado com sucesso!', data: updatedItem });
     } catch (err) {
-        res.status(400).json({ error: 'Erro ao atualizar item' });
+        console.error('Erro ao atualizar item:', err);
+        res.status(400).json({ error: 'Erro ao atualizar item', details: err.message });
     }
 });
 
 // Deletar item
 app.delete('/items/:id', async (req, res) => {
     try {
-        const item = await Item.findByIdAndDelete(req.params.id);
-        if (!item) return res.status(404).send('Item não encontrado');
-        res.send('Item deletado');
+        const deletedItem = await Item.findByIdAndDelete(req.params.id);
+        if (!deletedItem) {
+            return res.status(404).json({ message: 'Item não encontrado' });
+        }
+        res.status(200).json({ message: 'Item deletado com sucesso!' });
     } catch (err) {
-        res.status(500).json({ error: 'Erro ao deletar item' });
+        console.error('Erro ao deletar item:', err);
+        res.status(500).json({ error: 'Erro ao deletar item', details: err.message });
     }
 });
 
