@@ -90,14 +90,18 @@ export default function Doados() {
                 <button type="submit">Adicionar Livro</button>
             </form>
             <section className={S.boxBooks}>
-                {livros.map((item) => (
-                    <article key={item.id}>
-                        <img src={item.imagem_url} alt={item.titulo} />
-                        <h3>{item.titulo}</h3>
-                        <p>{item.autor}</p>
-                        <p>{item.categoria}</p>
-                    </article>
-                ))}
+                {livros.length > 0 ? (
+                    livros.map((item) => (
+                        <article key={item.id}>
+                            <img src={item.imagem_url} alt={item.titulo} />
+                            <h3>{item.titulo}</h3>
+                            <p>{item.autor}</p>
+                            <p>{item.categoria}</p>
+                        </article>
+                    ))
+                ) : (
+                    <p>Nenhum livro encontrado.</p>
+                )}
             </section>
         </section>
     );
