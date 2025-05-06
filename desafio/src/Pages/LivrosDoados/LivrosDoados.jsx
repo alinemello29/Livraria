@@ -16,7 +16,7 @@ export default function LivrosDoados() {
     const getLivros = async () => {
         try {
             const response = await axios.get(API_URL);
-            setLivros(response.data); // Ajuste conforme a estrutura da resposta
+            setLivros(response.data); // Ajuste conforme a estrutura da resposta da API
         } catch (error) {
             console.error("Erro ao buscar livros:", error);
         }
