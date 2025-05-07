@@ -34,7 +34,7 @@ export default function LivrosDoados() {
     };
 
     // Função para lidar com o envio do formulário
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => { // Adicionei 'async' aqui
         e.preventDefault();
         const livroData = {
             titulo,
@@ -42,7 +42,7 @@ export default function LivrosDoados() {
             categoria,
             imagem_url: imagemUrl,
         };
-        addLivro(livroData);
+        await addLivro(livroData); // Adicionei 'await' aqui
         // Limpa os campos do formulário
         setTitulo('');
         setAutor('');
