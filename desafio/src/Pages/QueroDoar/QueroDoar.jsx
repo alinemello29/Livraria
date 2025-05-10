@@ -2,14 +2,14 @@ import S from './doados.module.scss';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
-export default function Doados() {
+export default function LivrosDoados() {
     const [livros, setLivros] = useState([]);
     const [titulo, setTitulo] = useState('');
     const [autor, setAutor] = useState('');
     const [categoria, setCategoria] = useState('');
     const [imagemUrl, setImagemUrl] = useState('');
 
-    // URL da API
+    // URL da sua API
     const API_URL = 'https://desafio-2-api-livros-vai-na-web-53p7.onrender.com/items';
 
     // Função para buscar livros da API
@@ -33,8 +33,8 @@ export default function Doados() {
         }
     };
 
-    // Lidar com o envio do formulário
-    const handleSubmit = (e) => {
+    // Função para lidar com o envio do formulário
+    const handleSubmit = async (e) => { // Adicionei 'async' aqui
         e.preventDefault();
         const livroData = {
             titulo,
@@ -42,15 +42,15 @@ export default function Doados() {
             categoria,
             imagem_url: imagemUrl,
         };
-        addLivro(livroData);
-        // Limpar campos do formulário
+        await addLivro(livroData); // Adicionei 'await' aqui
+        // Limpa os campos do formulário
         setTitulo('');
         setAutor('');
         setCategoria('');
         setImagemUrl('');
     };
 
-    // Chama getLivros ao montar o componente
+    // useEffect para buscar livros ao montar o componente
     useEffect(() => {
         getLivros();
     }, []);
