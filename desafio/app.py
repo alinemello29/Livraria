@@ -17,6 +17,7 @@ def init_db():
 
 init_db()
 
+
 @app.route('/')
 def homepage():
     return '<h2>Minha API de Livros</h2>'
