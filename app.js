@@ -9,7 +9,6 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-
 // Conexão com MongoDB
 mongoose.connect('mongodb+srv://alinedev550:bSX2f93z1mOWQ3L0@cluster0.t8hply5.mongodb.net/livraria?retryWrites=true&w=majority')
     .then(() => console.log('✅ MongoDB conectado'))
